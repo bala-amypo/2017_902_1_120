@@ -13,6 +13,10 @@ public class studentcontroller{
 
     public studentcontroller(String keyValue,){
         this.keyValue=keyValue;
+        this.ownerId=ownerId;
+        this.active=active;
+        this.createdAt=createdAt;
+        this.updatedAt=updatedAt;
 
     }
     public getKeyValue(){
