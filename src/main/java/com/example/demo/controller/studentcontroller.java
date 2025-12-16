@@ -18,8 +18,8 @@ public class ApiKey{
     public getKeyValue(){
         return keyValue;
     }
-    public setKeyValue(){
-        return keyValue;
+    public setKeyValue(int keyValue){
+        this.keyValue=keyValue;
     }
 
 }
