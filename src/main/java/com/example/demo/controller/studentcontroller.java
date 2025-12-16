@@ -1,4 +1,4 @@
-public class ApiKey{
+public class studentcontroller{
 
     @Id
     private long id;
@@ -9,9 +9,9 @@ public class ApiKey{
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
-    public ApiKey(){}
+    public studentcontroller(){}
 
-    public ApiKey(String keyValue,){
+    public studentcontroller(String keyValue,){
         this.keyValue=keyValue;
 
     }
