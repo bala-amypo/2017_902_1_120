@@ -1,2 +1,4 @@
 package com.example.demo.service.Impl;
-public class ApiUsage
+public class ApiUsageLogServiceImpl implements ApiUsageLogServic{
+    
+}
