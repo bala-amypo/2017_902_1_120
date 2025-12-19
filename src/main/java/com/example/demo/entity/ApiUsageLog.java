@@ -1,6 +1,6 @@
 package com.example.demo.entity;
 import jakarta.persistence.*;
-import java.Time.*;
+import java.time.*;
 
 @Entity
 public class ApiUsageLog{
@@ -23,5 +23,14 @@ public class ApiUsageLog{
     }
     public void setApiKey(String apiKey){
         this.apiKey=apiKey;
+    }
+    public String getEndpoint(){
+        return endpoint;
+    }
+    public void setEndPoint(String){
+        this.enpoint=enpoint;
+    }
+    public Timestamp getTimeStamp(){
+        return 
     }
 }
