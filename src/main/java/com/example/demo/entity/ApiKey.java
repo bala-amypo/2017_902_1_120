@@ -3,14 +3,17 @@ import jakarta.persistence.*;
 import java.time.*;
 @Entity
 public class ApiKey{
+    @ManyToOneQuotaPlan
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private String keyValue;
     private Long ownerId;
     private Boolean active;
+    private String plan;
     private Timestamp createdAt;
     private Timestamp updatedAt;
+
 
     public int getId(){
         return id;
@@ -57,6 +60,6 @@ public class ApiKey{
         this.updatedAt=updatedAt;
     }
     public ApiKey(){
-        
+
     }
 }
