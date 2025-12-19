@@ -3,5 +3,7 @@ import jakarta.persistence.*;
 @Entity
 public class QuotaPlan{
     @Id
-    private 
+    private long id;
+    private String planName;
+    private Integer
 }
