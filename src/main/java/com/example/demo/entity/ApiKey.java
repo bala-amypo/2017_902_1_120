@@ -33,5 +33,7 @@ public class ApiKey{
     public Boolean getActive(){
         return active;
     }
-    public void set
+    public void setActive(Boolean active){
+        this.
+    }
 }
