@@ -36,4 +36,10 @@ public class ApiKey{
     public void setActive(Boolean active){
         this.active=active;
     }
+    public TimeStamp getCreatedAt(){
+        return createdAt;
+    }
+    public TimeStamp setCreatedAt(TimeStamp createdAt){
+        this.createdAt=
+    }
 }
