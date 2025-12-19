@@ -8,7 +8,8 @@ public class RateLimitEnforcement{
     private Long id;
     private String apiKey;
     private Timestamp blockedAt;
-    private Integer 
+    private Integer limitExceededBy;
+    private String message;
 
     public Long getId(){
         return id;
@@ -22,10 +23,7 @@ public class RateLimitEnforcement{
     public void setApiKey(String apiKey){
         this.apiKey=apiKey;
     }
-    public String getEndpoint(){
-        return endpoint;
-    }
-    public void setEndpoint(String endpoint){
-        this.endpoint=endpoint;
+    public Timestamp getBlockedAt(){
+        return blockedAt;
     }
 }
