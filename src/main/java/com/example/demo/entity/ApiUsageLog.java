@@ -31,6 +31,10 @@ public class ApiUsageLog{
         this.enpoint=enpoint;
     }
     public Timestamp getTimeStamp(){
-        return 
+        return timestamp;
     }
+    public void setTimeStamp(){
+        this.timestamp=timestamp;
+    }
+    public ApiUsageLog(Long id,)
 }
