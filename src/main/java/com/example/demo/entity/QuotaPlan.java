@@ -39,5 +39,11 @@ public class QuotaPlan{
     public void setActive(Boolean active){
         this.active=active;
     }
-    public QuotaPlan(Long id,String planName,String dailyLimit,String description,Boolean active)
+    public QuotaPlan(Long id,String planName,String dailyLimit,String description,Boolean active){
+        this.id=id;
+        this.planName=planName;
+        this.dailyLimit=dailyLimit;
+        this.description=description;
+        
+    }
 }
