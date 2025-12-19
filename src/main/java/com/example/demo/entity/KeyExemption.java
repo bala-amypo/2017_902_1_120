@@ -56,7 +56,11 @@ public class KeyExemption{
         this.apiKey=apiKey;
         this.notes=notes;
         this.unlimitedAccess=unlimitedAccess;
-        this.temporaryExtensionLimit=temporaryExtensionLimit
+        this.temporaryExtensionLimit=temporaryExtensionLimit;
+        this.validUntil=validUntil;
+    }
+    public KeyExemption(){
+        
     }
 
 }
