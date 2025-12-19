@@ -43,7 +43,13 @@ public class KeyExemption{
         return temporaryExtensionLimit;
     }
     public void setTemporaryExtensionLimit(Integer temporaryExtensionLimit){
-        this.
+        this.temporaryExtensionLimit=temporaryExtensionLimit;
+    }
+    public Timestamp getValidUntil(){
+        return validUntil;
+    }
+    public void setValidUntil(Timestamp){
+        this
     }
 
 }
