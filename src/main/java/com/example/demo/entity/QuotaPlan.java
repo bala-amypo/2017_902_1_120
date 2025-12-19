@@ -21,5 +21,14 @@ public class QuotaPlan{
     public void setPlanName(String planName){
         this.planName=planName;
     }
-    public Integer getDailyLimit
+    public Integer getDailyLimit(){
+        return dailyLimit;
+    }
+    public void setDailyLimit(Integer dailyLimit){
+        this.dailyLimit=dailyLimit;
+    }
+    public String getDescription(){
+        return description;
+    }
+    public String 
 }
