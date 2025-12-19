@@ -9,5 +9,9 @@ public class ApiKey{
     private Long ownerId;
     private Boolean active;
     private TimeStamp createdAt;
-    private 
+    private TimeStamp updatedAt;
+
+    public int getId(){
+        
+    }
 }
