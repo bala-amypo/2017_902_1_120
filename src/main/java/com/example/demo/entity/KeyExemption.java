@@ -5,6 +5,7 @@ import java.time.*;
 
 @Entity
 public class KeyExemption{
+    @ManyToOneApiKey
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
@@ -12,5 +13,10 @@ public class KeyExemption{
     private String notes;
     private Boolean unlimitedAccess;
     private Integer temporaryExtensionLimit;
-    private 
+    private Timestamp validUntil;
+
+    public Long getId()[
+        return 
+    ]
+
 }
