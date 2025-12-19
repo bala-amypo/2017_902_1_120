@@ -13,5 +13,14 @@ public class RateLimitEnforcement{
     public Long getId(){
         return id;
     }
-    public 
+    public void setId(Long id){
+        this.id=id;
+    }
+    public String getApiKey(){
+        return apiKey;
+    }
+    public void setApiKey(String apiKey){
+        this.apiKey=apiKey;
+    }
+    public String getEndPin
 }
