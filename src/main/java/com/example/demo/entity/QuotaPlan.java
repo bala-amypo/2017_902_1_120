@@ -44,6 +44,9 @@ public class QuotaPlan{
         this.planName=planName;
         this.dailyLimit=dailyLimit;
         this.description=description;
+        this.active=active;
+    }
+    public QuotaPlan{
         
     }
 }
