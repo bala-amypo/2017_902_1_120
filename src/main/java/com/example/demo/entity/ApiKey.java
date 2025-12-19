@@ -18,8 +18,14 @@ public class ApiKey{
     public void setId(Long id){
         this.id=id;
     }
-    public string getkeyValue(){
+    public String getKeyValue(){
         return keyValue;
     }
-    public void setkeyValue
+    public void setkeyValue(String KeyValue){
+        this.keyValue=keyValue;
+    }
+    public int getOwnerId(){
+        return ownerId;
+    }
+    public void setOwnerId()
 }
