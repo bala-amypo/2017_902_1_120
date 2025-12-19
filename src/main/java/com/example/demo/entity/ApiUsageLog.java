@@ -42,5 +42,7 @@ public class ApiUsageLog{
         this.endpoint=endpoint;
         this.timestamp=timestamp;
     }
-    public ApiUsage
+    public ApiUsageLog(){
+        
+    }
 }

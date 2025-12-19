@@ -15,7 +15,7 @@ public class ApiKey{
     private Timestamp updatedAt;
 
 
-    public int getId(){
+    public Long getId(){
         return id;
     }
     public void setId(Long id){
