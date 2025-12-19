@@ -27,5 +27,8 @@ public class ApiKey{
     public int getOwnerId(){
         return ownerId;
     }
-    public void setOwnerId()
+    public void setOwnerId(long ownerId){
+        this.ownerId=ownerId;
+    }
+    public Boolean 
 }
