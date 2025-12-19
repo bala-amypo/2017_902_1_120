@@ -34,6 +34,6 @@ public class ApiKey{
         return active;
     }
     public void setActive(Boolean active){
-        this.
+        this.active=active;
     }
 }
