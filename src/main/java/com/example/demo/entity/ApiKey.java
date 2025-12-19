@@ -39,7 +39,14 @@ public class ApiKey{
     public TimeStamp getCreatedAt(){
         return createdAt;
     }
-    public TimeStamp setCreatedAt(TimeStamp createdAt){
-        this.createdAt=
+    public void setCreatedAt(TimeStamp createdAt){
+        this.createdAt=createdAt;
     }
+    public TimeStamp getUpdatedAt(){
+        return updatedAt;
+    }
+    public void setUpdatedAt(TimeStamp updatedAt){
+        this.updatedAt=updatedAt;
+    }
+    public ApiKey(Long id,String KeyValue)
 }
