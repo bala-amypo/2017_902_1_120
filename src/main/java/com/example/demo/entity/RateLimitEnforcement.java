@@ -38,5 +38,9 @@ public class RateLimitEnforcement{
     public String getMessage(){
         return message;
     }
-    public void 
+    public void setMessage(String message){
+        this.message=message;
+    }
+
+    public RateLimitEnforcement(Long id,String apiKey,Timestamp blockedAt,Integer li)
 }
