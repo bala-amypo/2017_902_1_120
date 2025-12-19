@@ -5,7 +5,7 @@ public class QuotaPlan{
     @Id
     private long id;
     private String planName;
-    private Integer dailylimit;
+    private Integer dailyLimit;
     private String description;
     private Boolean active;
     
@@ -19,6 +19,7 @@ public class QuotaPlan{
          return planName;
     }
     public void setPlanName(String planName){
-        this.plan
+        this.planName=planName;
     }
+    public Integer getDailyLimit
 }
