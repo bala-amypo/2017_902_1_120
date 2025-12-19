@@ -48,8 +48,9 @@ public class KeyExemption{
     public Timestamp getValidUntil(){
         return validUntil;
     }
-    public void setValidUntil(Timestamp){
-        this
+    public void setValidUntil(Timestamp validUntil){
+        this.validUntil=validUntil;
     }
+    public KeyExemption(Long id,String apiKey,String notes,Boolean unlimitedAccess,Integer )
 
 }
