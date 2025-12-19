@@ -7,8 +7,8 @@ public class RateLimitEnforcement{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private String apiKey;
-    private String endpoint;
-    private Timestamp timestamp;
+    private Timestamp blockedAt;
+    private Integer 
 
     public Long getId(){
         return id;
@@ -22,5 +22,10 @@ public class RateLimitEnforcement{
     public void setApiKey(String apiKey){
         this.apiKey=apiKey;
     }
-    public String getEndPin
+    public String getEndpoint(){
+        return endpoint;
+    }
+    public void setEndpoint(String endpoint){
+        this.endpoint=endpoint;
+    }
 }
