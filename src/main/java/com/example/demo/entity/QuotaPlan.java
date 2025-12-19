@@ -12,11 +12,13 @@ public class QuotaPlan{
     public long getId(){
         return id;
     }
-    public void setId(String id){
+    public void setId(long id){
         this.id=id;
     }
-    public String planName(){
-
+    public String getPlanName(){
+         return planName;
     }
-    public void
+    public void setPlanName(String planName){
+        this.plan
+    }
 }
