@@ -26,11 +26,17 @@ public class RateLimitEnforcement{
     public Timestamp getBlockedAt(){
         return blockedAt;
     }
-    public void setBlockedAt(Timestamp){
+    public void setBlockedAt(Timestamp blockedAt){
         this.blockedAt=blockedAt;
     }
     public Integer getLimitExceededBy(){
         return limitExceededBy;
     }
-    public void setLimitExceededBy()
+    public void setLimitExceededBy(Integer limitExceededBy){
+        this.limitExceededBy=limitExceededBy;
+    }
+    public String getMessage(){
+        return message;
+    }
+    public void 
 }
