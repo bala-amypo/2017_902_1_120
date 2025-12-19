@@ -49,5 +49,7 @@ public class UserAccount{
         this.role=role;
         this.quotaPlans=quotaPlans;
     }
-    public UserAccount()
+    public UserAccount(){
+        
+    }
 }
