@@ -21,7 +21,7 @@ public class ApiKey{
     public String getKeyValue(){
         return keyValue;
     }
-    public void setkeyValue(String KeyValue){
+    public void setKeyValue(String KeyValue){
         this.keyValue=keyValue;
     }
     public int getOwnerId(){
@@ -30,5 +30,8 @@ public class ApiKey{
     public void setOwnerId(long ownerId){
         this.ownerId=ownerId;
     }
-    public Boolean 
+    public Boolean getActive(){
+        return active;
+    }
+    public void set
 }
