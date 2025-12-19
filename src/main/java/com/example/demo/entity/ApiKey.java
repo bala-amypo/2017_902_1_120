@@ -7,5 +7,7 @@ public class ApiKey{
     private Long id;
     private String keyValue;
     private Long ownerId;
-    private 
+    private Boolean active;
+    private TimeStamp createdAt;
+    
 }
