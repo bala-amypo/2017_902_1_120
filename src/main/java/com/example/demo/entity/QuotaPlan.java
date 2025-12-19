@@ -3,6 +3,7 @@ import jakarta.persistence.*;
 @Entity
 public class QuotaPlan{
     @Id
+    @GeneratedValue(strategy=
     private Long id;
     private String planName;
     private Integer dailyLimit;
@@ -47,6 +48,6 @@ public class QuotaPlan{
         this.active=active;
     }
     public QuotaPlan{
-        
+
     }
 }
