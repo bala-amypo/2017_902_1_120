@@ -15,8 +15,12 @@ public class KeyExemption{
     private Integer temporaryExtensionLimit;
     private Timestamp validUntil;
 
-    public Long getId()[
-        return 
-    ]
+    public Long getI(){
+        return id;
+    }
+    public void setId(Long id){
+        this.id=id;
+    }
+    public 
 
 }
