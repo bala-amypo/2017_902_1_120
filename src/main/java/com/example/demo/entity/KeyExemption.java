@@ -21,6 +21,14 @@ public class KeyExemption{
     public void setId(Long id){
         this.id=id;
     }
-    public 
+    public String getApiKey(){
+        return apiKey;
+    }
+    public void setApiKey(String apiKey){
+        this.apiKey=apiKey;
+    }
+    public String getNotes(){
+        return notes;
+    }
 
 }
