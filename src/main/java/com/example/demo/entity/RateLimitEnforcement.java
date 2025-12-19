@@ -42,5 +42,14 @@ public class RateLimitEnforcement{
         this.message=message;
     }
 
-    public RateLimitEnforcement(Long id,String apiKey,Timestamp blockedAt,Integer li)
+    public RateLimitEnforcement(Long id,String apiKey,Timestamp blockedAt,Integer limitExceededBy,String message){
+        this.id=id;
+        this.apiKey=apiKey;
+        this.blockedAt=blockedAt;
+        this.limitExceededBy=limitExceededBy;
+        this.message=message;
+    }
+    public RateLimitEnforcement(){
+        
+    }
 }
