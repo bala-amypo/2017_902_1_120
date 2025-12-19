@@ -26,4 +26,7 @@ public class RateLimitEnforcement{
     public Timestamp getBlockedAt(){
         return blockedAt;
     }
+    public void setBlockedAt(Timestamp){
+        this.blockedAt=blocked
+    }
 }
