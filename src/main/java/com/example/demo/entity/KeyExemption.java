@@ -33,8 +33,12 @@ public class KeyExemption{
     public void setNotes(String notes){
         this.notes=notes
     }
-    public Boolean getUnlimitedAccess(){
+    public Boolean getUnLimitedAccess(){
         return unlimitedAccess;
     }
+    public void setUnLimitedAccess(Boolean unlimitedAccess){
+        this.unlimitedAccess=unlimitedAccess;
+    }
+    public Integer 
 
 }
