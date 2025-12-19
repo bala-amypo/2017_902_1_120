@@ -39,6 +39,11 @@ public class KeyExemption{
     public void setUnLimitedAccess(Boolean unlimitedAccess){
         this.unlimitedAccess=unlimitedAccess;
     }
-    public Integer 
+    public Integer getTemporaryExtensionLimit(){
+        return temporaryExtensionLimit;
+    }
+    public void setTemporaryExtensionLimit(Integer temporaryExtensionLimit){
+        this.
+    }
 
 }
