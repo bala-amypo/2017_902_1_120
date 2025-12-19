@@ -29,5 +29,25 @@ public class UserAccount{
     public void setPassword(String password){
         this.password=password;
     }
-    public 
+    public String getRole(){
+        return role;
+    }
+    public void setRole(String role){
+        this.role=role;
+    }
+    public String getQuotaPlans(){
+        return quotaPlans;
+    }
+    public void setQuotaPlans(String quotaPlans){
+        this.quotaPlans=quotaPlans;
+    }
+
+    public UserAccount(Long id,String email,String password,String role,String quotaPlans){
+        this.id=id;
+        this.email=email;
+        this.password=password;
+        this.role=role;
+        this.quotaPlans=quotaPlans;
+    }
+    public UserAccount()
 }
