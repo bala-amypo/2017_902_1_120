@@ -1,4 +1,2 @@
 package com.example.demo.service.Impl;
-public class AuthServiceImpl implements AuthServiceImpl{
-    
-}
+public class AuthServiceImpl implements AuthService
