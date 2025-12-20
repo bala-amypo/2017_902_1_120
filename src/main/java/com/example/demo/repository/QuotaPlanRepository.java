@@ -5,5 +5,4 @@ import com.example.demo.entity.QuotaPlanRepository;
 @Repository
 public interface QuotaPlanRepository extends JpaRepository<QuotaPlanRepository,Integer>{
 
-    
 }

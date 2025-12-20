@@ -5,5 +5,4 @@ import com.example.demo.entity.KeyExemptionRepository;
 @Repository
 public interface keyExemptionRepository extends JpaRepository<keyExemptionRepository,Integer>{
 
-    
 }
