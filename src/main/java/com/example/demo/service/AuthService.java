@@ -4,7 +4,7 @@ import com.example.demo.entity.UserAccount;
 
 public interface AuthService {
 
-    UserAccount register(UserAccount user);
+    UserAccount register(String email, String password);
 
-    UserAccount login(String username, String password);
+    UserAccount login(String email, String password);
 }
