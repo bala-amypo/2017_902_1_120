@@ -1,4 +1,8 @@
 package com.example.demo.service;
-public class RateLimitEnforcementService{
-    
+
+import com.example.demo.entity.RateLimitEnforcement;
+
+public interface RateLimitEnforcementService {
+
+    RateLimitEnforcement create(RateLimitEnforcement enforcement);
 }
