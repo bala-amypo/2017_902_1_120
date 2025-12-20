@@ -50,43 +50,40 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
-import java.time.Instant;
+import java.time.LocalDate;
 
 @Entity
-@Table(name = "api_usage_logs")
 public class ApiUsageLog {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "api_key_id", nullable = false)
-    private ApiKey apiKey;
+    private String apiKey;
 
-    @Column(nullable = false)
-    private String endpoint;
+    private LocalDate usageDate;
 
-    @Column(nullable = false)
-    private Instant timestamp = Instant.now();
-
-    public ApiUsageLog() {}
-
-    public ApiUsageLog(ApiKey apiKey, String endpoint, Instant timestamp) {
-        this.apiKey = apiKey;
-        this.endpoint = endpoint;
-        this.timestamp = timestamp;
+    public Long getId() {
+        return id;
     }
 
-   
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public ApiKey getApiKey() { return apiKey; }
-    public void setApiKey(ApiKey apiKey) { this.apiKey = apiKey; }
+    public String getApiKey() {
+        return apiKey;
+    }
 
-    public String getEndpoint() { return endpoint; }
-    public void setEndpoint(String endpoint) { this.endpoint = endpoint; }
+    public void setApiKey(String apiKey) {
+        this.apiKey = apiKey;
+    }
 
-    public Instant getTimestamp() { return timestamp; }
-    public void setTimestamp(Instant timestamp) { this.timestamp = timestamp; }
+    public LocalDate getUsageDate() {
+        return usageDate;
+    }
+
+    public void setUsageDate(LocalDate usageDate) {
+        this.usageDate = usageDate;
+    }
 }
