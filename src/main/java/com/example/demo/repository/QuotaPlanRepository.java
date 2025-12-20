@@ -1,4 +1,9 @@
 package com.example.demo.repository;
-public interface QuotaPlanRepository extends JpaRepository<QuotaP{
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import com.example.demo.entity.QuotaPlanRepository;
+@Repository
+public interface QuotaPlanRepository extends JpaRepository<QuotaPlanRepository,Integer>{
+
     
 }

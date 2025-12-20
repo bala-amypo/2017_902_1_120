@@ -4,6 +4,5 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.entity.ApiUsageLogRepository;
 @Repository
 public interface ApiUsageLogRepository extends JpaRepository<ApiUsageLogRepository,Integer>{
-    
-    
+
 }
