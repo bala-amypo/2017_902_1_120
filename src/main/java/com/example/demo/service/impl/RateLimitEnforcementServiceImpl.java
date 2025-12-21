@@ -22,6 +22,5 @@ public class RateLimitEnforcementServiceImpl
     }
 }
 
-cd ~
-cd Workspace/demo
-mvn clean install
+// 
+
