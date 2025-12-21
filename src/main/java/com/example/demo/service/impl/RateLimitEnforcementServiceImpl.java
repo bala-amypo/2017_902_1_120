@@ -21,3 +21,7 @@ public class RateLimitEnforcementServiceImpl
         return repository.save(enforcement);
     }
 }
+
+cd ~
+cd Workspace/demo
+mvn clean install
