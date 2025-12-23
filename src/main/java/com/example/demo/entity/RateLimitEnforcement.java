@@ -60,14 +60,14 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "rate_limit_enforcements")
+@Table(name = "rate_limit_enforcement")
 public class RateLimitEnforcement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "api_key_id", nullable = false)
     private ApiKey apiKey;
 
@@ -77,16 +77,11 @@ public class RateLimitEnforcement {
     @Column(nullable = false)
     private Integer limitExceededBy;
 
-    @Column(length = 255)
     private String message;
 
-   
-
-    public RateLimitEnforcement() {
-        this.blockedAt = LocalDateTime.now();
-    }
-
   
+    public RateLimitEnforcement() {
+    }
 
     public Long getId() {
         return id;
