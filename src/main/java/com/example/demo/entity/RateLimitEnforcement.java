@@ -60,39 +60,42 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "rate_limit_enforcement")
+@Table(name = "rate_limit_enforcements")
 public class RateLimitEnforcement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private int limitExceededBy;
+
+    private String message;
+
+    private LocalDateTime blockedAt;
+
     @ManyToOne
     @JoinColumn(name = "api_key_id", nullable = false)
     private ApiKey apiKey;
 
-    @Column(nullable = false)
-    private LocalDateTime blockedAt;
-
-    @Column(nullable = false)
-    private Integer limitExceededBy;
-
-    private String message;
-
-  
-    public RateLimitEnforcement() {
-    }
-
+    // getters & setters
     public Long getId() {
         return id;
     }
 
-    public ApiKey getApiKey() {
-        return apiKey;
+    public int getLimitExceededBy() {
+        return limitExceededBy;
     }
 
-    public void setApiKey(ApiKey apiKey) {
-        this.apiKey = apiKey;
+    public void setLimitExceededBy(int limitExceededBy) {
+        this.limitExceededBy = limitExceededBy;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public LocalDateTime getBlockedAt() {
@@ -103,19 +106,11 @@ public class RateLimitEnforcement {
         this.blockedAt = blockedAt;
     }
 
-    public Integer getLimitExceededBy() {
-        return limitExceededBy;
+    public ApiKey getApiKey() {
+        return apiKey;
     }
 
-    public void setLimitExceededBy(Integer limitExceededBy) {
-        this.limitExceededBy = limitExceededBy;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
+    public void setApiKey(ApiKey apiKey) {
+        this.apiKey = apiKey;
     }
 }
