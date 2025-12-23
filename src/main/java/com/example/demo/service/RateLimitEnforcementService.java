@@ -7,13 +7,13 @@
 //     RateLimitEnforcement create(RateLimitEnforcement enforcement);
 // }
 
-package com.example.demo.service;
+// package com.example.demo.service;
 
-import com.example.demo.entity.RateLimitEnforcement;
+// import com.example.demo.entity.RateLimitEnforcement;
 
-public interface RateLimitEnforcementService {
+// public interface RateLimitEnforcementService {
 
-    RateLimitEnforcement save(RateLimitEnforcement enforcement);
+//     RateLimitEnforcement save(RateLimitEnforcement enforcement);
 
-}
+// }
 
