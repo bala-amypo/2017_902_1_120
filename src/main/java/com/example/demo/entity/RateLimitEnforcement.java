@@ -60,7 +60,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "rate_limit_enforcement")
+@Table(name = "rate_limit_enforcements")
 public class RateLimitEnforcement {
 
     @Id
@@ -81,8 +81,12 @@ public class RateLimitEnforcement {
     private String message;
 
    
+
     public RateLimitEnforcement() {
+        this.blockedAt = LocalDateTime.now();
     }
+
+  
 
     public Long getId() {
         return id;
@@ -120,4 +124,3 @@ public class RateLimitEnforcement {
         this.message = message;
     }
 }
-
