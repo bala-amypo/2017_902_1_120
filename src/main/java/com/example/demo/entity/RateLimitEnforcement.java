@@ -77,6 +77,6 @@ public class RateLimitEnforcement {
     @JoinColumn(name = "api_key_id", nullable = false)
     private ApiKey apiKey;
 
-    // getters & setters
+    
 }
 
