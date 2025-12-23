@@ -54,36 +54,49 @@
 //     }
 // 
 
-package com.example.demo.entity;
-
-import jakarta.persistence.*;
-import java.util.Set;
-
-@Entity
-@Table(
-    name = "user_accounts",
-    uniqueConstraints = @UniqueConstraint(columnNames = "email")
-)
+p@Entity
 public class UserAccount {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true, nullable = false)
     private String email;
 
+    @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false)
     private String role;
 
-    @ManyToMany
-    @JoinTable(
-        name = "user_quota_plans",
-        joinColumns = @JoinColumn(name = "user_id"),
-        inverseJoinColumns = @JoinColumn(name = "quota_plan_id")
-    )
-    private Set<QuotaPlan> quotaPlans;
+ 
+    public Long getId() {
+        return id;
+    }
 
-   
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }
+
