@@ -64,38 +64,96 @@
 //     }
 // }
 
+package com.example.demo.entity;
+
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
+
 @Entity
+@Table(
+    name = "api_key",
+    uniqueConstraints = @UniqueConstraint(columnNames = "key_value")
+)
 public class ApiKey {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    @Column(name = "key_value", nullable = false, unique = true)
     private String keyValue;
 
+    @Column(nullable = false)
+    private Long ownerId;
+
+    @ManyToOne
+    @JoinColumn(name = "plan_id")
+    private QuotaPlan plan;
+
+    @Column(nullable = false)
     private boolean active = true;
 
-   
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+
+    @PrePersist
+    public void onCreate() {
+        createdAt = LocalDateTime.now();
+        updatedAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    public void onUpdate() {
+        updatedAt = LocalDateTime.now();
+    }
+
+    // ✅ GETTERS & SETTERS (VERY IMPORTANT)
+
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getKeyValue() {
         return keyValue;
     }
 
-    public boolean isActive() {
-        return active;
-    }
-
-   
     public void setKeyValue(String keyValue) {
         this.keyValue = keyValue;
+    }
+
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public QuotaPlan getPlan() {
+        return plan;
+    }
+
+    public void setPlan(QuotaPlan plan) {
+        this.plan = plan;
+    }
+
+    public boolean isActive() {
+        return active;
     }
 
     public void setActive(boolean active) {
         this.active = active;
     }
-}
 
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+}

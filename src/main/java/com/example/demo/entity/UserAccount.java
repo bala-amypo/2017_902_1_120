@@ -54,7 +54,7 @@
 //     }
 // 
 
-p@Entity
+@Entity
 public class UserAccount {
 
     @Id
