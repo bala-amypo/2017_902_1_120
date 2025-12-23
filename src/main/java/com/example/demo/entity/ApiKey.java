@@ -81,7 +81,6 @@ public class ApiKey {
 
     private boolean active = true;
 
-    // ===== Getters & Setters =====
 
     public Long getId() {
         return id;
