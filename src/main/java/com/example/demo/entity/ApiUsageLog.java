@@ -73,5 +73,5 @@ public class ApiUsageLog {
         timestamp = LocalDateTime.now();
     }
 
-    // getters and setters
+ 
 }
