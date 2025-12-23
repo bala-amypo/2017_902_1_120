@@ -43,13 +43,33 @@
 //     }
 // }
 
-@PostMapping("/api/enforcements")
-public ResponseEntity<RateLimitEnforcement> create(
-        @RequestBody RateLimitEnforcement enforcement) {
+package com.example.demo.controller;
 
-    return ResponseEntity.ok(
-        rateLimitEnforcementService.create(enforcement)
-    );
+import com.example.demo.entity.RateLimitEnforcement;
+import com.example.demo.service.RateLimitEnforcementService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/rate-limit")
+public class RateLimitEnforcementController {
+
+    private final RateLimitEnforcementService rateLimitEnforcementService;
+
+    public RateLimitEnforcementController(RateLimitEnforcementService rateLimitEnforcementService) {
+        this.rateLimitEnforcementService = rateLimitEnforcementService;
+    }
+
+    @PostMapping
+    public ResponseEntity<RateLimitEnforcement> create(
+            @RequestBody RateLimitEnforcement enforcement) {
+
+        RateLimitEnforcement saved =
+                rateLimitEnforcementService.create(enforcement);
+
+        return ResponseEntity.ok(saved);
+    }
 }
+
 
 
