@@ -67,9 +67,9 @@ public class RateLimitEnforcement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int limitExceededBy;
-
     private String message;
+
+    private int limitExceededBy;
 
     private LocalDateTime blockedAt;
 
@@ -78,39 +78,5 @@ public class RateLimitEnforcement {
     private ApiKey apiKey;
 
     // getters & setters
-    public Long getId() {
-        return id;
-    }
-
-    public int getLimitExceededBy() {
-        return limitExceededBy;
-    }
-
-    public void setLimitExceededBy(int limitExceededBy) {
-        this.limitExceededBy = limitExceededBy;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public LocalDateTime getBlockedAt() {
-        return blockedAt;
-    }
-
-    public void setBlockedAt(LocalDateTime blockedAt) {
-        this.blockedAt = blockedAt;
-    }
-
-    public ApiKey getApiKey() {
-        return apiKey;
-    }
-
-    public void setApiKey(ApiKey apiKey) {
-        this.apiKey = apiKey;
-    }
 }
+
