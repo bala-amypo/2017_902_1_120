@@ -52,13 +52,11 @@ import com.example.demo.service.RateLimitEnforcementService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RateLimitEnforcementServiceImpl
-        implements RateLimitEnforcementService {
+public class RateLimitEnforcementServiceImpl implements RateLimitEnforcementService {
 
     private final RateLimitEnforcementRepository repository;
 
-    public RateLimitEnforcementServiceImpl(
-            RateLimitEnforcementRepository repository) {
+    public RateLimitEnforcementServiceImpl(RateLimitEnforcementRepository repository) {
         this.repository = repository;
     }
 
@@ -67,6 +65,7 @@ public class RateLimitEnforcementServiceImpl
         return repository.save(enforcement);
     }
 }
+
 
 
 

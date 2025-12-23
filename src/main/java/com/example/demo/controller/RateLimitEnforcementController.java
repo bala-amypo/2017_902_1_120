@@ -47,7 +47,6 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.RateLimitEnforcement;
 import com.example.demo.service.RateLimitEnforcementService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -61,15 +60,11 @@ public class RateLimitEnforcementController {
     }
 
     @PostMapping
-    public ResponseEntity<RateLimitEnforcement> create(
-            @RequestBody RateLimitEnforcement enforcement) {
-
-        RateLimitEnforcement saved =
-                rateLimitEnforcementService.create(enforcement);
-
-        return ResponseEntity.ok(saved);
+    public RateLimitEnforcement create(@RequestBody RateLimitEnforcement enforcement) {
+        return rateLimitEnforcementService.create(enforcement);
     }
 }
+
 
 
 
