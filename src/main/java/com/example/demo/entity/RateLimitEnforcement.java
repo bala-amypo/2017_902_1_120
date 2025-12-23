@@ -52,44 +52,35 @@
 //     public RateLimitEnforcement(){
         
 //     }
-// }
+// 
 
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "rate_limit_enforcement")
 public class RateLimitEnforcement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String apiKey;
+    @ManyToOne
+    @JoinColumn(name = "api_key_id")
+    private ApiKey apiKey;
+
+    private LocalDateTime blockedAt;
+
+    private Integer limitExceededBy;
 
     private String message;
 
-    public Long getId() {
-        return id;
+    @PrePersist
+    void onCreate() {
+        blockedAt = LocalDateTime.now();
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getApiKey() {
-        return apiKey;
-    }
-
-    public void setApiKey(String apiKey) {
-        this.apiKey = apiKey;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
+    // getters and setters
 }

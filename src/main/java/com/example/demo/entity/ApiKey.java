@@ -67,9 +67,13 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "api_key")
+@Table(
+    name = "api_key",
+    uniqueConstraints = @UniqueConstraint(columnNames = "key_value")
+)
 public class ApiKey {
 
     @Id
@@ -79,29 +83,29 @@ public class ApiKey {
     @Column(name = "key_value", nullable = false, unique = true)
     private String keyValue;
 
-    private boolean active = true;
+    @Column(nullable = false)
+    private Long ownerId;
 
-    public Long getId() {
-        return id;
+    @ManyToOne
+    @JoinColumn(name = "plan_id")
+    private QuotaPlan plan;
+
+    @Column(nullable = false)
+    private Boolean active = true;
+
+    private LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
+
+    @PrePersist
+    void onCreate() {
+        createdAt = LocalDateTime.now();
+        updatedAt = LocalDateTime.now();
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    @PreUpdate
+    void onUpdate() {
+        updatedAt = LocalDateTime.now();
     }
 
-    public String getKeyValue() {
-        return keyValue;
-    }
-
-    public void setKeyValue(String keyValue) {
-        this.keyValue = keyValue;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
 }

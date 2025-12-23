@@ -50,40 +50,28 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "api_usage_log")
 public class ApiUsageLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String apiKey;
+    @ManyToOne
+    @JoinColumn(name = "api_key_id")
+    private ApiKey apiKey;
 
-    private LocalDate usageDate;
+    private String endpoint;
 
-    public Long getId() {
-        return id;
+    private LocalDateTime timestamp;
+
+    @PrePersist
+    void onCreate() {
+        timestamp = LocalDateTime.now();
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getApiKey() {
-        return apiKey;
-    }
-
-    public void setApiKey(String apiKey) {
-        this.apiKey = apiKey;
-    }
-
-    public LocalDate getUsageDate() {
-        return usageDate;
-    }
-
-    public void setUsageDate(LocalDate usageDate) {
-        this.usageDate = usageDate;
-    }
+    // getters and setters
 }
