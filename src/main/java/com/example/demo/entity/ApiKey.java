@@ -14,8 +14,8 @@ public class ApiKey{
     private Boolean active;
 
     @ManyToOne
-    @JoinColumn(nmae="plan_id)
-    private String plan;
+    @JoinColumn(name="plan_id")
+    private QuotaPlan plan;
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
