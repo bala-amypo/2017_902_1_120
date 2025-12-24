@@ -2,7 +2,7 @@ package com.example.demo.entity;
 import jakarta.persistence.*;
 @Entity
 public class UserAccount{
-    // @ManyToManyQuotaPlan
+   
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
@@ -11,7 +11,10 @@ public class UserAccount{
     private String email;
     private String password;
     private String role;
-    private Quot quotaPlans;
+
+    @ManyToOne
+    @JoinColumn(name="quotaplan_id")
+    private QuotaPlan quotaPlans;
 
     public Long getId(){
         return id;
