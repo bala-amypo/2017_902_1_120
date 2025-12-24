@@ -7,10 +7,14 @@ public class ApiKey{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
+
+    @Column(unique=true)
     private String keyValue;
     private Long ownerId;
     private Boolean active;
-    
+
+    @ManyToOne
+    @JoinColumn(nmae="plan_id)
     private String plan;
     private Timestamp createdAt;
     private Timestamp updatedAt;
