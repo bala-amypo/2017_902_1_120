@@ -1,111 +1,58 @@
-// package com.example.demo.entity;
-// import jakarta.persistence.*;
-// @Entity
-// public class UserAccount{
-//     @ManyToManyQuotaPlan
-//     @Id
-//     @GeneratedValue(strategy=GenerationType.IDENTITY)
-//     private Long id;
-//     private String email;
-//     private String password;
-//     private String role;
-//     private String quotaPlans;
-
-//     public Long getId(){
-//         return id;
-//     }
-//     public void setId(Long id){
-//         this.id=id;
-//     }
-//     public String getEmail(){
-//         return email;
-//     }
-//     public void setEmail(String email){
-//         this.email=email;
-//     }
-//     public String getPassword(){
-//         return password;
-//     }
-//     public void setPassword(String password){
-//         this.password=password;
-//     }
-//     public String getRole(){
-//         return role;
-//     }
-//     public void setRole(String role){
-//         this.role=role;
-//     }
-//     public String getQuotaPlans(){
-//         return quotaPlans;
-//     }
-//     public void setQuotaPlans(String quotaPlans){
-//         this.quotaPlans=quotaPlans;
-//     }
-
-//     public UserAccount(Long id,String email,String password,String role,String quotaPlans){
-//         this.id=id;
-//         this.email=email;
-//         this.password=password;
-//         this.role=role;
-//         this.quotaPlans=quotaPlans;
-//     }
-//     public UserAccount(){
-        
-//     }
-// 
-
 package com.example.demo.entity;
-
 import jakarta.persistence.*;
-
 @Entity
-@Table(name = "user_account")
-public class UserAccount {
-
+public class UserAccount{
+    // @ManyToManyQuotaPlan
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique=true)
     private String email;
-
-    @Column(nullable = false)
     private String password;
-
-    @Column(nullable = false)
     private String role;
+    private Quot quotaPlans;
 
-
-    public Long getId() {
+    public Long getId(){
         return id;
     }
-
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long id){
+        this.id=id;
     }
-
-    public String getEmail() {
+    public String getEmail(){
         return email;
     }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String email){
+        this.email=email;
     }
-
-    public String getPassword() {
+    public String getPassword(){
         return password;
     }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String password){
+        this.password=password;
     }
-
-    public String getRole() {
+    public String getRole(){
         return role;
     }
-
-    public void setRole(String role) {
-        this.role = role;
+    public void setRole(String role){
+        this.role=role;
     }
-}
+    public String getQuotaPlans(){
+        return quotaPlans;
+    }
+    public void setQuotaPlans(String quotaPlans){
+        this.quotaPlans=quotaPlans;
+    }
+
+    public UserAccount(Long id,String email,String password,String role,String quotaPlans){
+        this.id=id;
+        this.email=email;
+        this.password=password;
+        this.role=role;
+        this.quotaPlans=quotaPlans;
+    }
+    public UserAccount(){
+        
+    }
+
 
