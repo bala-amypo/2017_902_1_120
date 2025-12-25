@@ -62,20 +62,19 @@ import java.util.List;
 @Service
 public class KeyExemptionServiceImpl implements KeyExemptionService {
 
-    private final KeyExemptionRepository repository;
+    private final KeyExemptionRepository keyExemptionRepository;
 
-    public KeyExemptionServiceImpl(KeyExemptionRepository repository) {
-        this.repository = repository;
+    public KeyExemptionServiceImpl(KeyExemptionRepository keyExemptionRepository) {
+        this.keyExemptionRepository = keyExemptionRepository;
     }
 
     @Override
     public List<KeyExemption> getAllExemptions() {
-        return repository.findAll();
+        return keyExemptionRepository.findAll();
     }
 
     @Override
     public KeyExemption create(KeyExemption exemption) {
-        return repository.save(exemption);
+        return keyExemptionRepository.save(exemption);
     }
 }
-
