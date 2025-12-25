@@ -1,3 +1,11 @@
+package com.example.demo.controller;
+
+import com.example.demo.entity.KeyExemption;
+import com.example.demo.service.KeyExemptionService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/key-exemptions")
 public class KeyExemptionController {
@@ -9,7 +17,7 @@ public class KeyExemptionController {
     }
 
     @GetMapping
-    public List<KeyExemption> getAllKeyExemptions() {
+    public List<KeyExemption> getAll() {
         return keyExemptionService.getAllExemptions();
     }
 
