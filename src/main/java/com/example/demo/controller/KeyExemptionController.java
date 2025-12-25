@@ -17,12 +17,12 @@ public class KeyExemptionController {
     }
 
     @GetMapping
-    public List<KeyExemption> getAll() {
+    public List<KeyExemption> getAllKeyExemptions() {
         return keyExemptionService.getAllExemptions();
     }
 
     @PostMapping
     public KeyExemption create(@RequestBody KeyExemption exemption) {
-        return keyExemptionService.save(exemption);
+        return keyExemptionService.create(exemption);
     }
 }
