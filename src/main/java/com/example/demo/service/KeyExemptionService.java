@@ -8,8 +8,7 @@
 //     List<KeyExemption> getAllExemptions();
 
 //     KeyExemption create(KeyExemption exemption);
-// }
-
+//  }
 package com.example.demo.service;
 
 import com.example.demo.entity.KeyExemption;
