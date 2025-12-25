@@ -18,5 +18,5 @@ public interface KeyExemptionService {
 
     List<KeyExemption> getAllExemptions();
 
-    KeyExemption create(KeyExemption exemption);
+    KeyExemption save(KeyExemption exemption);
 }

@@ -23,6 +23,6 @@ public class KeyExemptionController {
 
     @PostMapping
     public KeyExemption create(@RequestBody KeyExemption exemption) {
-        return keyExemptionService.create(exemption);
+        return keyExemptionService.save(exemption);
     }
 }
