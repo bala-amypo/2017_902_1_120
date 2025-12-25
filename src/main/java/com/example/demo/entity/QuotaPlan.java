@@ -7,7 +7,7 @@ public class QuotaPlan{
     private Long id;
 
     @Column(unique=true)
-    private String planNama;
+    private String planName;
 
     private Integer dailyLimit;
     private String description;

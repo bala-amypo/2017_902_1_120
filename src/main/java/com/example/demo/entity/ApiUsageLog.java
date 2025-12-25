@@ -1,53 +1,120 @@
+// package com.example.demo.entity;
+// import jakarta.persistence.*;
+// import java.time.*;
+
+// @Entity
+// public class ApiUsageLog{
+//     // @ManyToOneApikey
+//     @Id
+//     @GeneratedValue(strategy=GenerationType.IDENTITY)
+//     private Long id;
+
+//     @ManyToOne
+//     @JoinColumn(name = "api_key_id")
+//     private ApiKey apiKey;
+    
+//     private String endpoint;
+//     private Timestamp timestamp;
+
+//     public Long getId(){
+//         return id;
+//     }
+//     public void setId(Long id){
+//         this.id=id;
+//     }
+//     public String getApiKey(){
+//         return apiKey;
+//     }
+//     public void setApiKey(String apiKey){
+//         this.apiKey=apiKey;
+//     }
+//     public String getEndpoint(){
+//         return endpoint;
+//     }
+//     public void setEndPoint(String){
+//         this.enpoint=enpoint;
+//     }
+//     public Timestamp getTimeStamp(){
+//         return timestamp;
+//     }
+//     public void setTimeStamp(){
+//         this.timestamp=timestamp;
+//     }
+//     public ApiUsageLog(Long id,String apiKey,String endpoint,Timestamp timestamp){
+//         this.id=id;
+//         this.apiKey=apiKey;
+//         this.endpoint=endpoint;
+//         this.timestamp=timestamp;
+//     }
+//     public ApiUsageLog(){
+        
+//     }
+
+
 package com.example.demo.entity;
+
 import jakarta.persistence.*;
-import java.time.*;
+import java.sql.Timestamp;
 
 @Entity
-public class ApiUsageLog{
-    // @ManyToOneApikey
+@Table(name = "api_usage_log")
+public class ApiUsageLog {
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "api_key_id")
+    @JoinColumn(name = "api_key_id", nullable = false)
     private ApiKey apiKey;
-    
+
     private String endpoint;
+
     private Timestamp timestamp;
 
-    public Long getId(){
+    // ===== Getters & Setters =====
+
+    public Long getId() {
         return id;
     }
-    public void setId(Long id){
-        this.id=id;
+
+    public void setId(Long id) {
+        this.id = id;
     }
-    public String getApiKey(){
+
+    public ApiKey getApiKey() {
         return apiKey;
     }
-    public void setApiKey(String apiKey){
-        this.apiKey=apiKey;
+
+    public void setApiKey(ApiKey apiKey) {
+        this.apiKey = apiKey;
     }
-    public String getEndpoint(){
+
+    public String getEndpoint() {
         return endpoint;
     }
-    public void setEndPoint(String){
-        this.enpoint=enpoint;
+
+    public void setEndpoint(String endpoint) {
+        this.endpoint = endpoint;
     }
-    public Timestamp getTimeStamp(){
+
+    public Timestamp getTimestamp() {
         return timestamp;
     }
-    public void setTimeStamp(){
-        this.timestamp=timestamp;
-    }
-    public ApiUsageLog(Long id,String apiKey,String endpoint,Timestamp timestamp){
-        this.id=id;
-        this.apiKey=apiKey;
-        this.endpoint=endpoint;
-        this.timestamp=timestamp;
-    }
-    public ApiUsageLog(){
-        
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
     }
 
+    // ===== Constructors =====
 
+    public ApiUsageLog() {
+    }
+
+    public ApiUsageLog(Long id, ApiKey apiKey, String endpoint, Timestamp timestamp) {
+        this.id = id;
+        this.apiKey = apiKey;
+        this.endpoint = endpoint;
+        this.timestamp = timestamp;
+    }
+}
