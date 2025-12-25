@@ -1,13 +1,76 @@
+// package com.example.demo.entity;
+// import jakarta.persistence.*;
+// @Entity
+// public class RateLimitEnforcement{
+//     @ManyToOneApiKey
+//     @Id
+//     @GeneratedValue(strategy=GenerationType.IDENTITY)
+//     private Long id;
+    
+    
+//     @ManyToOne
+//     @JoinColumn(name = "api_key_id", nullable = false)
+//     private ApiKey apiKey;
+
+//     private Timestamp blockedAt;
+//     private Integer limitExceededBy;
+//     private String message;
+
+//     public Long getId(){
+//         return id;
+//     }
+//     public void setId(Long id){
+//         this.id=id;
+//     }
+//     public String getApiKey(){
+//         return apiKey;
+//     }
+//     public void setApiKey(String apiKey){
+//         this.apiKey=apiKey;
+//     }
+//     public Timestamp getBlockedAt(){
+//         return blockedAt;
+//     }
+//     public void setBlockedAt(Timestamp blockedAt){
+//         this.blockedAt=blockedAt;
+//     }
+//     public Integer getLimitExceededBy(){
+//         return limitExceededBy;
+//     }
+//     public void setLimitExceededBy(Integer limitExceededBy){
+//         this.limitExceededBy=limitExceededBy;
+//     }
+//     public String getMessage(){
+//         return message;
+//     }
+//     public void setMessage(String message){
+//         this.message=message;
+//     }
+
+//     public RateLimitEnforcement(Long id,String apiKey,Timestamp blockedAt,Integer limitExceededBy,String message){
+//         this.id=id;
+//         this.apiKey=apiKey;
+//         this.blockedAt=blockedAt;
+//         this.limitExceededBy=limitExceededBy;
+//         this.message=message;
+//     }
+//     public RateLimitEnforcement(){
+        
+//     }
+
+
 package com.example.demo.entity;
+
 import jakarta.persistence.*;
+import java.sql.Timestamp;
+
 @Entity
-public class RateLimitEnforcement{
-    @ManyToOneApiKey
+public class RateLimitEnforcement {
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    
+
     @ManyToOne
     @JoinColumn(name = "api_key_id", nullable = false)
     private ApiKey apiKey;
@@ -16,47 +79,65 @@ public class RateLimitEnforcement{
     private Integer limitExceededBy;
     private String message;
 
-    public Long getId(){
+    // ===== Getters & Setters =====
+
+    public Long getId() {
         return id;
     }
-    public void setId(Long id){
-        this.id=id;
+
+    public void setId(Long id) {
+        this.id = id;
     }
-    public String getApiKey(){
+
+    public ApiKey getApiKey() {
         return apiKey;
     }
-    public void setApiKey(String apiKey){
-        this.apiKey=apiKey;
+
+    public void setApiKey(ApiKey apiKey) {
+        this.apiKey = apiKey;
     }
-    public Timestamp getBlockedAt(){
+
+    public Timestamp getBlockedAt() {
         return blockedAt;
     }
-    public void setBlockedAt(Timestamp blockedAt){
-        this.blockedAt=blockedAt;
+
+    public void setBlockedAt(Timestamp blockedAt) {
+        this.blockedAt = blockedAt;
     }
-    public Integer getLimitExceededBy(){
+
+    public Integer getLimitExceededBy() {
         return limitExceededBy;
     }
-    public void setLimitExceededBy(Integer limitExceededBy){
-        this.limitExceededBy=limitExceededBy;
+
+    public void setLimitExceededBy(Integer limitExceededBy) {
+        this.limitExceededBy = limitExceededBy;
     }
-    public String getMessage(){
+
+    public String getMessage() {
         return message;
     }
-    public void setMessage(String message){
-        this.message=message;
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public RateLimitEnforcement(Long id,String apiKey,Timestamp blockedAt,Integer limitExceededBy,String message){
-        this.id=id;
-        this.apiKey=apiKey;
-        this.blockedAt=blockedAt;
-        this.limitExceededBy=limitExceededBy;
-        this.message=message;
-    }
-    public RateLimitEnforcement(){
-        
+    // ===== Constructors =====
+
+    public RateLimitEnforcement() {
     }
 
-
+    public RateLimitEnforcement(
+            Long id,
+            ApiKey apiKey,
+            Timestamp blockedAt,
+            Integer limitExceededBy,
+            String message
+    ) {
+        this.id = id;
+        this.apiKey = apiKey;
+        this.blockedAt = blockedAt;
+        this.limitExceededBy = limitExceededBy;
+        this.message = message;
+    }
+}
 
