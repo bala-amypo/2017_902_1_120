@@ -6,4 +6,6 @@ import java.util.List;
 public interface KeyExemptionService {
 
     List<KeyExemption> getAllExemptions();
+
+    KeyExemption create(KeyExemption exemption);
 }
