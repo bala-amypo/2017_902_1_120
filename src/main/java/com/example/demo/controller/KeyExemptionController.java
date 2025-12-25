@@ -17,7 +17,7 @@ public class KeyExemptionController {
     }
 
     @GetMapping
-    public List<KeyExemption> getAllKeyExemptions() {
+    public List<KeyExemption> getAll() {
         return keyExemptionService.getAllExemptions();
     }
 
