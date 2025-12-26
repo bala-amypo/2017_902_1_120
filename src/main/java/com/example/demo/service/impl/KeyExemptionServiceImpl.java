@@ -1,28 +1,44 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.KeyExemption;
+import com.example.demo.exception.BadRequestException;
+import com.example.demo.exception.ResourceNotFoundException;
+import com.example.demo.repository.ApiKeyRepository;
 import com.example.demo.repository.KeyExemptionRepository;
 import com.example.demo.service.KeyExemptionService;
-import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.List;
 
-@Service
 public class KeyExemptionServiceImpl implements KeyExemptionService {
 
-    private final KeyExemptionRepository repository;
+    private final KeyExemptionRepository repo;
+    private final ApiKeyRepository keyRepo;
 
-    public KeyExemptionServiceImpl(KeyExemptionRepository repository) {
-        this.repository = repository;
+    public KeyExemptionServiceImpl(KeyExemptionRepository repo, ApiKeyRepository keyRepo) {
+        this.repo = repo;
+        this.keyRepo = keyRepo;
+    }
+
+    @Override
+    public KeyExemption createExemption(KeyExemption ex) {
+        if (ex.getTemporaryExtensionLimit() < 0) {
+            throw new BadRequestException("Invalid extension");
+        }
+        if (ex.getValidUntil().isBefore(Instant.now())) {
+            throw new BadRequestException("Invalid expiry");
+        }
+        return repo.save(ex);
+    }
+
+    @Override
+    public KeyExemption getExemptionByKey(Long keyId) {
+        return repo.findByApiKey_Id(keyId)
+                .orElseThrow(() -> new ResourceNotFoundException("Exemption not found"));
     }
 
     @Override
     public List<KeyExemption> getAllExemptions() {
-        return repository.findAll();
-    }
-
-    @Override
-    public KeyExemption create(KeyExemption exemption) {
-        return repository.save(exemption);
+        return repo.findAll();
     }
 }

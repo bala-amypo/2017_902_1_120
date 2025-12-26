@@ -1,50 +1,40 @@
-// package com.example.demo.service.impl;
-
-// import com.example.demo.entity.RateLimitEnforcement;
-// import com.example.demo.repository.RateLimitEnforcementRepository;
-// import com.example.demo.service.RateLimitEnforcementService;
-// import org.springframework.stereotype.Service;
-
-// @Service
-// public class RateLimitEnforcementServiceImpl implements RateLimitEnforcementService {
-
-//     private final RateLimitEnforcementRepository repository;
-
-//     public RateLimitEnforcementServiceImpl(RateLimitEnforcementRepository repository) {
-//         this.repository = repository;
-//     }
-
-//     @Override
-//     public RateLimitEnforcement create(RateLimitEnforcement enforcement) {
-//         return repository.save(enforcement);
-//     }
-// }
-
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.RateLimitEnforcement;
+import com.example.demo.exception.BadRequestException;
+import com.example.demo.exception.ResourceNotFoundException;
+import com.example.demo.repository.ApiKeyRepository;
 import com.example.demo.repository.RateLimitEnforcementRepository;
 import com.example.demo.service.RateLimitEnforcementService;
-import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
+import java.util.List;
 
-@Service
 public class RateLimitEnforcementServiceImpl implements RateLimitEnforcementService {
 
-    private final RateLimitEnforcementRepository rateLimitEnforcementRepository;
+    private final RateLimitEnforcementRepository repo;
+    private final ApiKeyRepository keyRepo;
 
-    public RateLimitEnforcementServiceImpl(
-            RateLimitEnforcementRepository rateLimitEnforcementRepository) {
-        this.rateLimitEnforcementRepository = rateLimitEnforcementRepository;
+    public RateLimitEnforcementServiceImpl(RateLimitEnforcementRepository repo, ApiKeyRepository keyRepo) {
+        this.repo = repo;
+        this.keyRepo = keyRepo;
     }
 
     @Override
-    public RateLimitEnforcement create(RateLimitEnforcement enforcement) {
+    public RateLimitEnforcement createEnforcement(RateLimitEnforcement e) {
+        if (e.getLimitExceededBy() <= 0) {
+            throw new BadRequestException("Invalid limit");
+        }
+        return repo.save(e);
+    }
 
-        // set blocked time automatically
-        enforcement.setBlockedAt(new Timestamp(System.currentTimeMillis()));
+    @Override
+    public RateLimitEnforcement getEnforcementById(Long id) {
+        return repo.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Enforcement not found"));
+    }
 
-        return rateLimitEnforcementRepository.save(enforcement);
+    @Override
+    public List<RateLimitEnforcement> getEnforcementsForKey(Long keyId) {
+        return repo.findByApiKey_Id(keyId);
     }
 }
