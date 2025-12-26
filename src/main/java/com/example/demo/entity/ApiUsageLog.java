@@ -54,10 +54,9 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
-import java.sql.Timestamp;
+import java.time.Instant;
 
 @Entity
-@Table(name = "api_usage_log")
 public class ApiUsageLog {
 
     @Id
@@ -65,56 +64,20 @@ public class ApiUsageLog {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "api_key_id", nullable = false)
     private ApiKey apiKey;
 
     private String endpoint;
+    private Instant timestamp;
 
-    private Timestamp timestamp;
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    // ===== Getters & Setters =====
+    public ApiKey getApiKey() { return apiKey; }
+    public void setApiKey(ApiKey apiKey) { this.apiKey = apiKey; }
 
-    public Long getId() {
-        return id;
-    }
+    public String getEndpoint() { return endpoint; }
+    public void setEndpoint(String endpoint) { this.endpoint = endpoint; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public ApiKey getApiKey() {
-        return apiKey;
-    }
-
-    public void setApiKey(ApiKey apiKey) {
-        this.apiKey = apiKey;
-    }
-
-    public String getEndpoint() {
-        return endpoint;
-    }
-
-    public void setEndpoint(String endpoint) {
-        this.endpoint = endpoint;
-    }
-
-    public Timestamp getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    // ===== Constructors =====
-
-    public ApiUsageLog() {
-    }
-
-    public ApiUsageLog(Long id, ApiKey apiKey, String endpoint, Timestamp timestamp) {
-        this.id = id;
-        this.apiKey = apiKey;
-        this.endpoint = endpoint;
-        this.timestamp = timestamp;
-    }
+    public Instant getTimestamp() { return timestamp; }
+    public void setTimestamp(Instant timestamp) { this.timestamp = timestamp; }
 }
