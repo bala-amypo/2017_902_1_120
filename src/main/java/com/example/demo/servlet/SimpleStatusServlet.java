@@ -18,15 +18,4 @@
 //     }
 // }
 
-@WebServlet("/simple-status")
-public class SimpleStatusServlet extends HttpServlet {
 
-    @Override
-    public void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws IOException {
-
-        resp.setStatus(200);
-        resp.setContentType("text/plain");
-        resp.getWriter().write("API Rate Limiter & Quota Manager is running");
-    }
-}
