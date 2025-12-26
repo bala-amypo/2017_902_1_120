@@ -1,43 +1,28 @@
-// package com.example.demo.controller;
-
-// import com.example.demo.entity.ApiUsageLog;
-// import com.example.demo.service.ApiUsageLogService;
-// import org.springframework.web.bind.annotation.*;
-
-// @RestController
-// @RequestMapping("/api/usage-logs")
-// public class ApiUsageLogController {
-
-//     private final ApiUsageLogService apiUsageLogService;
-
-//     public ApiUsageLogController(ApiUsageLogService apiUsageLogService) {
-//         this.apiUsageLogService = apiUsageLogService;
-//     }
-
-//     @PostMapping
-//     public ApiUsageLog logUsage(@RequestBody ApiUsageLog log) {
-//         return apiUsageLogService.logUsage(log);
-//     }
-// }
-
 package com.example.demo.controller;
 
 import com.example.demo.entity.ApiUsageLog;
 import com.example.demo.service.ApiUsageLogService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/api/usage-logs")
+@RequestMapping("/api/usage")
 public class ApiUsageLogController {
 
-    private final ApiUsageLogService apiUsageLogService;
+    private final ApiUsageLogService service;
 
-    public ApiUsageLogController(ApiUsageLogService apiUsageLogService) {
-        this.apiUsageLogService = apiUsageLogService;
+    public ApiUsageLogController(ApiUsageLogService service) {
+        this.service = service;
     }
 
     @PostMapping
-    public ApiUsageLog logUsage(@RequestBody ApiUsageLog log) {
-        return apiUsageLogService.logUsage(log);
+    public ApiUsageLog log(@RequestBody ApiUsageLog log) {
+        return service.logUsage(log);
+    }
+
+    @GetMapping("/{keyId}")
+    public List<ApiUsageLog> get(@PathVariable Long keyId) {
+        return service.getUsageForApiKey(keyId);
     }
 }

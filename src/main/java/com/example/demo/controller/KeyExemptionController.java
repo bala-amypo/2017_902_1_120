@@ -7,22 +7,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/key-exemptions")
+@RequestMapping("/api/exemptions")
 public class KeyExemptionController {
 
-    private final KeyExemptionService keyExemptionService;
+    private final KeyExemptionService service;
 
-    public KeyExemptionController(KeyExemptionService keyExemptionService) {
-        this.keyExemptionService = keyExemptionService;
+    public KeyExemptionController(KeyExemptionService service) {
+        this.service = service;
+    }
+
+    @PostMapping
+    public KeyExemption create(@RequestBody KeyExemption e) {
+        return service.createExemption(e);
     }
 
     @GetMapping
     public List<KeyExemption> getAll() {
-        return keyExemptionService.getAllExemptions();
-    }
-
-    @PostMapping
-    public KeyExemption create(@RequestBody KeyExemption exemption) {
-        return keyExemptionService.create(exemption);
+        return service.getAllExemptions();
     }
 }
