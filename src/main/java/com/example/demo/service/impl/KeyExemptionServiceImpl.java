@@ -1,4 +1,5 @@
 package com.example.demo.service.impl;
+import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.KeyExemption;
 import com.example.demo.exception.BadRequestException;
@@ -9,7 +10,6 @@ import com.example.demo.service.KeyExemptionService;
 
 import java.time.Instant;
 import java.util.List;
-import org.springframework.stereotype.Service;
 
 @Service
 public class KeyExemptionServiceImpl implements KeyExemptionService {
