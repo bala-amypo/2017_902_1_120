@@ -15,7 +15,8 @@ public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }mvn 
+    }
+
     @Bean
     public AuthenticationManager authenticationManager() {
         return new ProviderManager(Collections.emptyList());
