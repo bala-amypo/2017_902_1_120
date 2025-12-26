@@ -11,3 +11,4 @@ public interface ApiKeyService {
     List<ApiKey> getAllApiKeys();
     void deactivateApiKey(Long id);
 }
+

@@ -10,11 +10,22 @@ import java.util.List;
 @RequestMapping("/api/api-keys")
 public class ApiKeyController {
 
-    private final ApiKeyService service;
+    private final ApiKeyService apiKeyService;
 
     public ApiKeyController(ApiKeyService service) {
         this.service = service;
     }
+    @RestController
+@RequestMapping("/api/api-keys")
+public class ApiKeyController {
+
+    private final ApiKeyService apiKeyService;
+
+    public ApiKeyController(ApiKeyService apiKeyService) {
+        this.apiKeyService = apiKeyService;
+    }
+}
+
 
     @PostMapping
     public ApiKey create(@RequestBody ApiKey key) {
