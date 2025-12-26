@@ -8,6 +8,7 @@ import com.example.demo.repository.RateLimitEnforcementRepository;
 import com.example.demo.service.RateLimitEnforcementService;
 
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 @Service
 public class RateLimitEnforcementServiceImpl implements RateLimitEnforcementService {

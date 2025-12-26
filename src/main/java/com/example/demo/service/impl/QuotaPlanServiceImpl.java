@@ -7,6 +7,7 @@ import com.example.demo.repository.QuotaPlanRepository;
 import com.example.demo.service.QuotaPlanService;
 
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 @Service
 public class QuotaPlanServiceImpl implements QuotaPlanService {
