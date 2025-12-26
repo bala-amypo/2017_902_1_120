@@ -9,6 +9,7 @@ import com.example.demo.service.RateLimitEnforcementService;
 
 import java.util.List;
 
+@Service
 public class RateLimitEnforcementServiceImpl implements RateLimitEnforcementService {
 
     private final RateLimitEnforcementRepository repo;
