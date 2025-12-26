@@ -10,15 +10,12 @@ import java.security.Key;
 import java.util.Date;
 import java.util.Map;
 
-@Component   // 🔥 THIS IS THE KEY FIX
+@Component   
 public class JwtUtil {
 
     private static final long EXPIRATION_MILLIS = 1000 * 60 * 60; // 1 hour
     private final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
-    // ===============================
-    // Generate Token
-    // ===============================
     public String generateToken(Map<String, Object> claims, String subject) {
         return Jwts.builder()
                 .setClaims(claims)
@@ -29,9 +26,6 @@ public class JwtUtil {
                 .compact();
     }
 
-    // ===============================
-    // Extract Claims
-    // ===============================
     public Claims getClaims(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(key)
@@ -40,16 +34,11 @@ public class JwtUtil {
                 .getBody();
     }
 
-    // ===============================
-    // Extract Username
-    // ===============================
+   
     public String getUsername(String token) {
         return getClaims(token).getSubject();
     }
 
-    // ===============================
-    // Validate Token
-    // ===============================
     public boolean isTokenValid(String token, String username) {
         return username.equals(getUsername(token)) && !isTokenExpired(token);
     }
@@ -58,9 +47,6 @@ public class JwtUtil {
         return getClaims(token).getExpiration().before(new Date());
     }
 
-    // ===============================
-    // Expiration (used in tests)
-    // ===============================
     public long getExpirationMillis() {
         return EXPIRATION_MILLIS;
     }
