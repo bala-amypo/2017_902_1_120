@@ -1,84 +1,57 @@
-// package com.example.demo.service.impl;
-
-// import com.example.demo.entity.ApiKey;
-// import com.example.demo.repository.ApiKeyRepository;
-// import com.example.demo.service.ApiKeyService;
-// import org.springframework.stereotype.Service;
-
-// import java.util.List;
-// import java.util.UUID;
-
-// @Service
-// public class ApiKeyServiceImpl implements ApiKeyService {
-
-//     private final ApiKeyRepository apiKeyRepository;
-
-//     public ApiKeyServiceImpl(ApiKeyRepository apiKeyRepository) {
-//         this.apiKeyRepository = apiKeyRepository;
-//     }
-
-//     @Override
-//     public ApiKey createKey() {
-//         ApiKey apiKey = new ApiKey();
-//         apiKey.setKeyValue(UUID.randomUUID().toString());
-//         return apiKeyRepository.save(apiKey);
-//     }
-
-//     @Override
-//     public List<ApiKey> getAll() {
-//         return apiKeyRepository.findAll();
-//     }
-
-//     @Override
-//     public void deactivate(Long id) {
-//         ApiKey apiKey = apiKeyRepository.findById(id).orElseThrow();
-//         apiKey.setActive(false);
-//         apiKeyRepository.save(apiKey);
-//     }
-// }
-
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.ApiKey;
+import com.example.demo.entity.QuotaPlan;
+import com.example.demo.exception.BadRequestException;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.ApiKeyRepository;
+import com.example.demo.repository.QuotaPlanRepository;
 import com.example.demo.service.ApiKeyService;
-import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
-import java.time.Instant;
 import java.util.List;
-import java.util.UUID;
 
-@Service
 public class ApiKeyServiceImpl implements ApiKeyService {
 
-    private final ApiKeyRepository apiKeyRepository;
+    private final ApiKeyRepository repo;
+    private final QuotaPlanRepository planRepo;
 
-    public ApiKeyServiceImpl(ApiKeyRepository apiKeyRepository) {
-        this.apiKeyRepository = apiKeyRepository;
+    public ApiKeyServiceImpl(ApiKeyRepository repo, QuotaPlanRepository planRepo) {
+        this.repo = repo;
+        this.planRepo = planRepo;
     }
 
     @Override
-    public ApiKey createKey() {
-        ApiKey apiKey = new ApiKey();
-        apiKey.setKeyValue(UUID.randomUUID().toString());
-        apiKey.setActive(true);
-        apiKey.setCreatedAt(Timestamp.from(Instant.now()));
-        apiKey.setUpdatedAt(Timestamp.from(Instant.now()));
-        return apiKeyRepository.save(apiKey);
+    public ApiKey createApiKey(ApiKey key) {
+        QuotaPlan plan = planRepo.findById(key.getPlan().getId())
+                .orElseThrow(() -> new ResourceNotFoundException("Plan not found"));
+
+        if (!plan.isActive()) {
+            throw new BadRequestException("Plan inactive");
+        }
+
+        return repo.save(key);
     }
 
     @Override
-    public List<ApiKey> getAll() {
-        return apiKeyRepository.findAll();
+    public ApiKey getApiKeyById(Long id) {
+        return repo.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("ApiKey not found"));
     }
 
     @Override
-    public void deactivate(Long id) {
-        ApiKey apiKey = apiKeyRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("API Key not found"));
-        apiKey.setActive(false);
-        apiKey.setUpdatedAt(Timestamp.from(Instant.now()));
-        apiKeyRepository.save(apiKey);
+    public ApiKey getApiKeyByValue(String value) {
+        return repo.findByKeyValue(value)
+                .orElseThrow(() -> new ResourceNotFoundException("ApiKey not found"));
+    }
+
+    @Override
+    public List<ApiKey> getAllApiKeys() {
+        return repo.findAll();
+    }
+
+    @Override
+    public void deactivateApiKey(Long id) {
+        ApiKey key = getApiKeyById(id);
+        key.setActive(false);
     }
 }
