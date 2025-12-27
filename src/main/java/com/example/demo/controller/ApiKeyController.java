@@ -52,43 +52,48 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.ApiKey;
 import com.example.demo.service.ApiKeyService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api-keys")
+@RequestMapping("/api/api-keys")
 public class ApiKeyController {
 
-    private final ApiKeyService service;
+    private final ApiKeyService apiKeyService;
 
-    public ApiKeyController(ApiKeyService service) {
-        this.service = service;
+    public ApiKeyController(ApiKeyService apiKeyService) {
+        this.apiKeyService = apiKeyService;
     }
 
     @PostMapping
-    public ApiKey create(@RequestBody ApiKey key) {
-        return service.createApiKey(key);
+    public ResponseEntity<ApiKey> createApiKey(@RequestBody ApiKey apiKey) {
+        ApiKey created = apiKeyService.createApiKey(apiKey);
+        return ResponseEntity.ok(created);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ApiKey> updateApiKey(@PathVariable Long id, @RequestBody ApiKey apiKey) {
+        ApiKey updated = apiKeyService.updateApiKey(id, apiKey);
+        return ResponseEntity.ok(updated);
     }
 
     @GetMapping("/{id}")
-    public ApiKey getById(@PathVariable Long id) {
-        return service.getApiKeyById(id);
-    }
-
-    @GetMapping("/value/{keyValue}")
-    public ApiKey getByValue(@PathVariable String keyValue) {
-        return service.getApiKeyByValue(keyValue);
+    public ResponseEntity<ApiKey> getApiKeyById(@PathVariable Long id) {
+        ApiKey apiKey = apiKeyService.getApiKeyById(id);
+        return ResponseEntity.ok(apiKey);
     }
 
     @GetMapping
-    public List<ApiKey> getAll() {
-        return service.getAllApiKeys();
+    public ResponseEntity<List<ApiKey>> getAllApiKeys() {
+        List<ApiKey> apiKeys = apiKeyService.getAllApiKeys();
+        return ResponseEntity.ok(apiKeys);
     }
 
-    @DeleteMapping("/{id}")
-    public String deactivate(@PathVariable Long id) {
-        service.deactivateApiKey(id);
-        return "API key deactivated";
+    @PutMapping("/{id}/deactivate")
+    public ResponseEntity<Void> deactivateApiKey(@PathVariable Long id) {
+        apiKeyService.deactivateApiKey(id);
+        return ResponseEntity.ok().build();
     }
 }
