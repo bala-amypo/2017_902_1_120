@@ -1,21 +1,21 @@
-// package com.example.demo.servlet;
+package com.example.demo.servlet;
 
-// import jakarta.servlet.http.HttpServlet;
-// import jakarta.servlet.http.HttpServletRequest;
-// import jakarta.servlet.http.HttpServletResponse;
-// import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.annotation.WebServlet;
 
-// import java.io.IOException;
+import java.io.IOException;
 
-// @WebServlet("/simple-status")
-// public class SimpleStatusServlet extends HttpServlet {
+@WebServlet("/simple-status")
+public class SimpleStatusServlet extends HttpServlet {
 
-//     @Override
-//     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-//         resp.setStatus(200);
-//         resp.setContentType("text/plain");
-//         resp.getWriter().write("API Rate Limiter & Quota Manager is running");
-//     }
-// }
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        resp.setStatus(200);
+        resp.setContentType("text/plain");
+        resp.getWriter().write("API Rate Limiter & Quota Manager is running");
+    }
+}
 
 
