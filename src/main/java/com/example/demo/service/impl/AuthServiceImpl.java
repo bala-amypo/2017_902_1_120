@@ -61,24 +61,28 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public AuthResponseDto login(AuthRequestDto request) {
-        UserAccount user = userAccountRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+public AuthResponseDto login(AuthRequestDto request) {
 
-        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-            throw new BadRequestException("Invalid credentials");
-        }
+    UserAccount user = userAccountRepository
+            .findByEmail(request.getEmail())
+            .orElseThrow(() -> new BadRequestException("Invalid credentials"));
 
-        Map<String, Object> claims = new HashMap<>();
-        claims.put("role", user.getRole());
-        String token = jwtUtil.generateToken(claims, user.getEmail());
-
-        AuthResponseDto response = new AuthResponseDto();
-        response.setToken(token);
-        response.setUserId(user.getId());
-        response.setEmail(user.getEmail());
-        response.setRole(user.getRole());
-
-        return response;
+    if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+        throw new BadRequestException("Invalid credentials");
     }
+
+    Map<String, Object> claims = new HashMap<>();
+    claims.put("role", user.getRole());
+
+    String token = jwtUtil.generateToken(claims, user.getEmail());
+
+    AuthResponseDto response = new AuthResponseDto();
+    response.setToken(token);
+    response.setUserId(user.getId());
+    response.setEmail(user.getEmail());
+    response.setRole(user.getRole());
+
+    return response;
+}
+
 }
