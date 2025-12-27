@@ -31,32 +31,42 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.KeyExemption;
 import com.example.demo.service.KeyExemptionService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/exemptions")
+@RequestMapping("/api/key-exemptions")
 public class KeyExemptionController {
 
-    private final KeyExemptionService service;
+    private final KeyExemptionService keyExemptionService;
 
-    public KeyExemptionController(KeyExemptionService service) {
-        this.service = service;
+    public KeyExemptionController(KeyExemptionService keyExemptionService) {
+        this.keyExemptionService = keyExemptionService;
     }
 
     @PostMapping
-    public KeyExemption create(@RequestBody KeyExemption e) {
-        return service.createExemption(e);
+    public ResponseEntity<KeyExemption> createExemption(@RequestBody KeyExemption exemption) {
+        KeyExemption created = keyExemptionService.createExemption(exemption);
+        return ResponseEntity.ok(created);
     }
 
-    @GetMapping("/{apiKeyId}")
-    public KeyExemption getByKey(@PathVariable Long apiKeyId) {
-        return service.getExemptionByKey(apiKeyId);
+    @PutMapping("/{id}")
+    public ResponseEntity<KeyExemption> updateExemption(@PathVariable Long id, @RequestBody KeyExemption exemption) {
+        KeyExemption updated = keyExemptionService.updateExemption(id, exemption);
+        return ResponseEntity.ok(updated);
+    }
+
+    @GetMapping("/key/{keyId}")
+    public ResponseEntity<KeyExemption> getExemptionByKey(@PathVariable Long keyId) {
+        KeyExemption exemption = keyExemptionService.getExemptionByKey(keyId);
+        return ResponseEntity.ok(exemption);
     }
 
     @GetMapping
-    public List<KeyExemption> getAll() {
-        return service.getAllExemptions();
+    public ResponseEntity<List<KeyExemption>> getAllExemptions() {
+        List<KeyExemption> exemptions = keyExemptionService.getAllExemptions();
+        return ResponseEntity.ok(exemptions);
     }
 }

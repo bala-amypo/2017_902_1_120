@@ -31,32 +31,36 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.RateLimitEnforcement;
 import com.example.demo.service.RateLimitEnforcementService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/enforcements")
+@RequestMapping("/api/enforcements")
 public class RateLimitEnforcementController {
 
-    private final RateLimitEnforcementService service;
+    private final RateLimitEnforcementService rateLimitEnforcementService;
 
-    public RateLimitEnforcementController(RateLimitEnforcementService service) {
-        this.service = service;
+    public RateLimitEnforcementController(RateLimitEnforcementService rateLimitEnforcementService) {
+        this.rateLimitEnforcementService = rateLimitEnforcementService;
     }
 
     @PostMapping
-    public RateLimitEnforcement create(@RequestBody RateLimitEnforcement e) {
-        return service.createEnforcement(e);
+    public ResponseEntity<RateLimitEnforcement> createEnforcement(@RequestBody RateLimitEnforcement enforcement) {
+        RateLimitEnforcement created = rateLimitEnforcementService.createEnforcement(enforcement);
+        return ResponseEntity.ok(created);
     }
 
     @GetMapping("/{id}")
-    public RateLimitEnforcement getById(@PathVariable Long id) {
-        return service.getEnforcementById(id);
+    public ResponseEntity<RateLimitEnforcement> getEnforcementById(@PathVariable Long id) {
+        RateLimitEnforcement enforcement = rateLimitEnforcementService.getEnforcementById(id);
+        return ResponseEntity.ok(enforcement);
     }
 
-    @GetMapping("/key/{apiKeyId}")
-    public List<RateLimitEnforcement> getByKey(@PathVariable Long apiKeyId) {
-        return service.getEnforcementsForKey(apiKeyId);
+    @GetMapping("/key/{keyId}")
+    public ResponseEntity<List<RateLimitEnforcement>> getEnforcementsForKey(@PathVariable Long keyId) {
+        List<RateLimitEnforcement> enforcements = rateLimitEnforcementService.getEnforcementsForKey(keyId);
+        return ResponseEntity.ok(enforcements);
     }
 }
