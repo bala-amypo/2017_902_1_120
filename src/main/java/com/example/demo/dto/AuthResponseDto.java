@@ -8,13 +8,6 @@ public class AuthResponseDto {
 
     public AuthResponseDto() {}
 
-    public AuthResponseDto(String token, Long userId, String email, String role) {
-        this.token = token;
-        this.userId = userId;
-        this.email = email;
-        this.role = role;
-    }
-
     public String getToken() { return token; }
     public void setToken(String token) { this.token = token; }
 
