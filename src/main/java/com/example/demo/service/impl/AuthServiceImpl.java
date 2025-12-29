@@ -62,17 +62,19 @@ public AuthResponseDto login(AuthRequestDto request) {
     return response;
 }
 
-
-    @Override
+@Override
 public AuthResponseDto login(AuthRequestDto request) {
+
+    authenticationManager.authenticate(
+            new org.springframework.security.authentication.UsernamePasswordAuthenticationToken(
+                    request.getEmail(),
+                    request.getPassword()
+            )
+    );
 
     UserAccount user = userAccountRepository
             .findByEmail(request.getEmail())
             .orElseThrow(() -> new BadRequestException("Invalid credentials"));
-
-    if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-        throw new BadRequestException("Invalid credentials");
-    }
 
     Map<String, Object> claims = new HashMap<>();
     claims.put("role", user.getRole());
