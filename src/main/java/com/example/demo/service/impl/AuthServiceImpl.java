@@ -35,30 +35,33 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public AuthResponseDto register(RegisterRequestDto request) {
-        if (userAccountRepository.existsByEmail(request.getEmail())) {
-            throw new BadRequestException("Email already exists");
-        }
+public AuthResponseDto login(AuthRequestDto request) {
 
-        UserAccount user = new UserAccount();
-        user.setEmail(request.getEmail());
-        user.setPassword(passwordEncoder.encode(request.getPassword()));
-        user.setRole(request.getRole());
+    authenticationManager.authenticate(
+            new org.springframework.security.authentication.UsernamePasswordAuthenticationToken(
+                    request.getEmail(),
+                    request.getPassword()
+            )
+    );
 
-        userAccountRepository.save(user);
+    UserAccount user = userAccountRepository
+            .findByEmail(request.getEmail())
+            .orElseThrow(() -> new BadRequestException("Invalid credentials"));
 
-        Map<String, Object> claims = new HashMap<>();
-        claims.put("role", user.getRole());
-        String token = jwtUtil.generateToken(claims, user.getEmail());
+    Map<String, Object> claims = new HashMap<>();
+    claims.put("role", user.getRole());
 
-        AuthResponseDto response = new AuthResponseDto();
-        response.setToken(token);
-        response.setUserId(user.getId());
-        response.setEmail(user.getEmail());
-        response.setRole(user.getRole());
+    String token = jwtUtil.generateToken(claims, user.getEmail());
 
-        return response;
-    }
+    AuthResponseDto response = new AuthResponseDto();
+    response.setToken(token);
+    response.setUserId(user.getId());
+    response.setEmail(user.getEmail());
+    response.setRole(user.getRole());
+
+    return response;
+}
+
 
     @Override
 public AuthResponseDto login(AuthRequestDto request) {

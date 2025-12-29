@@ -32,14 +32,18 @@ public class JwtUtil {
     }
 
     public String generateToken(Map<String, Object> claims, String subject) {
-        return Jwts.builder()
-                .setClaims(claims)
-                .setSubject(subject)
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + expirationMillis))
-                .signWith(getSigningKey(), SignatureAlgorithm.HS256)
-                .compact();
-    }
+
+    long expiry = expirationMillis > 0 ? expirationMillis : 3600000;
+
+    return Jwts.builder()
+            .setClaims(claims)
+            .setSubject(subject)
+            .setIssuedAt(new Date())
+            .setExpiration(new Date(System.currentTimeMillis() + expiry))
+            .signWith(getSigningKey(), SignatureAlgorithm.HS256)
+            .compact();
+}
+
 
     public Claims getClaims(String token) {
         return Jwts.parserBuilder()
